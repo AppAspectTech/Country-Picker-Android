@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             Bundle bundle_data=new Bundle();
             bundle_data.putString(AppConstants.ARGUMENT_1,edit_country.getText().toString().trim());
-            bundle_data.putInt(AppConstants.ARGUMENT_2,R.color.colorAccent);
-            bundle_data.putInt(AppConstants.ARGUMENT_3,R.color.background_black_color);
+            bundle_data.putInt(AppConstants.ARGUMENT_2,R.color.colorPrimary);
+            bundle_data.putInt(AppConstants.ARGUMENT_3,R.color.colorPrimaryDark);
             Intent intent=new Intent(MainActivity.this, Country_Activity.class);
             intent.putExtras(bundle_data);
             startActivityForResult(intent, AppConstants.SELECT_COUNTRY);
