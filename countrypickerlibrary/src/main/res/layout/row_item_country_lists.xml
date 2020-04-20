@@ -15,13 +15,13 @@
         android:padding="@dimen/margin_05"
         android:layout_width="@dimen/item_icon_size"
         android:layout_height="@dimen/item_icon_size"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@mipmap/us"/>
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_dial_code"
         android:paddingEnd="@dimen/margin_02"
         android:paddingStart="@dimen/margin_02"
         android:layout_width="55dp"
-        android:text="+1 849"
+        android:text="+1"
         android:textSize="@dimen/font_14"
         android:textColor="@color/text_color_black"
         android:layout_height="wrap_content" />

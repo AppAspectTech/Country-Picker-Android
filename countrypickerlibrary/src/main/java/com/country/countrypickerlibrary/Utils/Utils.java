@@ -1,4 +1,4 @@
-package com.country.picker.Utils;
+package com.country.countrypickerlibrary.Utils;
 
 
 import android.content.Context;

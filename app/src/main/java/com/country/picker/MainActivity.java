@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.country.picker.Utils.AppConstants;
-import com.country.picker.model.CountryData;
+
+import com.country.countrypickerlibrary.Country_Activity;
+import com.country.countrypickerlibrary.Utils.AppConstants;
+import com.country.countrypickerlibrary.model.CountryData;
 import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // check if the request code is same as what is passed  here it is 2
         if(resultCode== Activity.RESULT_OK)
         {
-            if(requestCode==AppConstants.SELECT_COUNTRY)
+            if(requestCode== AppConstants.SELECT_COUNTRY)
             {
                 if(data!=null)
                 {

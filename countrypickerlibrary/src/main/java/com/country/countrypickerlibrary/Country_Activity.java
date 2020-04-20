@@ -1,4 +1,4 @@
-package com.country.picker;
+package com.country.countrypickerlibrary;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,6 +18,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -26,14 +27,16 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.country.picker.Utils.AppConstants;
-import com.country.picker.Utils.Utils;
-import com.country.picker.model.CountryData;
+
+import com.country.countrypickerlibrary.Utils.AppConstants;
+import com.country.countrypickerlibrary.Utils.Utils;
+import com.country.countrypickerlibrary.model.CountryData;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -204,14 +207,10 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v)
     {
-
-        switch (v.getId()) {
-
-            case R.id.txt_Select:
-            case R.id.txt_Cancel:
-                onBackPressed();
-                break;
-
+        int id = v.getId();
+        if (id == R.id.txt_Select || id == R.id.txt_Cancel)
+        {
+            onBackPressed();
         }
     }
 

@@ -1,7 +1,7 @@
-package com.country.picker.model;
+package com.country.countrypickerlibrary.model;
 
 
-import com.country.picker.db.DBObject;
+import com.country.countrypickerlibrary.db.DBObject;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
