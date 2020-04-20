@@ -7,7 +7,7 @@ If the user need display Country List witht the icons as well as Country Dial Co
 
 
 ## Country Picker
-<img src="screenshot1.jpeg" alt="preview" width="300" height="533">
+<img src="screenshot2.jpg" alt="preview" width="300" height="533">
 
 
 ## Installation
@@ -64,42 +64,42 @@ Country Picker Example:
                                 startActivityForResult(intent, AppConstants.SELECT_COUNTRY);
                             
 2. To get the result form this library just add this snippet in your fragment or activity.
-                            
-                 
-    @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data)
-        {
-            super.onActivityResult(requestCode, resultCode, data);
-            // check if the request code is same as what is passed  here it is 2
-            if(resultCode== Activity.RESULT_OK)
+
+                        
+        @Override
+            protected void onActivityResult(int requestCode, int resultCode, Intent data)
             {
-                if(requestCode==AppConstants.SELECT_COUNTRY)
+                super.onActivityResult(requestCode, resultCode, data);
+                // check if the request code is same as what is passed  here it is 2
+                if(resultCode== Activity.RESULT_OK)
                 {
-                    if(data!=null)
+                    if(requestCode==AppConstants.SELECT_COUNTRY)
                     {
-                        Bundle bundle_data=data.getExtras();
-                        if(bundle_data!=null)
+                        if(data!=null)
                         {
-                            String str_countryData=bundle_data.getString(AppConstants.ARGUMENT_1);
-                            CountryData countryData_selected=  gson.fromJson(str_countryData,CountryData.class);
-    
-                            if(countryData_selected==null)
+                            Bundle bundle_data=data.getExtras();
+                            if(bundle_data!=null)
                             {
-                                edit_country.setText("");
+                                String str_countryData=bundle_data.getString(AppConstants.ARGUMENT_1);
+                                CountryData countryData_selected=  gson.fromJson(str_countryData,CountryData.class);
+        
+                                if(countryData_selected==null)
+                                {
+                                    edit_country.setText("");
+                                }
+                                else
+                                {
+                                    edit_country.setText(countryData_selected.getCountry_name());
+                                }
+        
                             }
-                            else
-                            {
-                                edit_country.setText(countryData_selected.getCountry_name());
-                            }
-    
+        
                         }
-    
+        
                     }
-    
                 }
-            }
-    
-        }                            
+        
+            }                            
                             
 ## Select Country Screen:
 
