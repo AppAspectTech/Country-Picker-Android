@@ -49,7 +49,7 @@ The library is very simple, just note that :
 
 Country Picker Example:
 
-public static final int  SELECT_COUNTRY=12345;
+    public static final int  SELECT_COUNTRY=12345;
     public static final String  ARGUMENT_1="ARGUMENT_1";
     public static final String  ARGUMENT_2="ARGUMENT_2";
     public static final String  ARGUMENT_3="ARGUMENT_3";
@@ -63,62 +63,63 @@ public static final int  SELECT_COUNTRY=12345;
                                 intent.putExtras(bundle_data);
                                 startActivityForResult(intent, AppConstants.SELECT_COUNTRY);
                             
+2. To get the result form this library just add this snippet in your fragment or activity.
                             
-                  
-@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        // check if the request code is same as what is passed  here it is 2
-        if(resultCode== Activity.RESULT_OK)
+                 
+    @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data)
         {
-            if(requestCode==AppConstants.SELECT_COUNTRY)
+            super.onActivityResult(requestCode, resultCode, data);
+            // check if the request code is same as what is passed  here it is 2
+            if(resultCode== Activity.RESULT_OK)
             {
-                if(data!=null)
+                if(requestCode==AppConstants.SELECT_COUNTRY)
                 {
-                    Bundle bundle_data=data.getExtras();
-                    if(bundle_data!=null)
+                    if(data!=null)
                     {
-                        String str_countryData=bundle_data.getString(AppConstants.ARGUMENT_1);
-                        CountryData countryData_selected=  gson.fromJson(str_countryData,CountryData.class);
-
-                        if(countryData_selected==null)
+                        Bundle bundle_data=data.getExtras();
+                        if(bundle_data!=null)
                         {
-                            edit_country.setText("");
+                            String str_countryData=bundle_data.getString(AppConstants.ARGUMENT_1);
+                            CountryData countryData_selected=  gson.fromJson(str_countryData,CountryData.class);
+    
+                            if(countryData_selected==null)
+                            {
+                                edit_country.setText("");
+                            }
+                            else
+                            {
+                                edit_country.setText(countryData_selected.getCountry_name());
+                            }
+    
                         }
-                        else
-                        {
-                            edit_country.setText(countryData_selected.getCountry_name());
-                        }
-
+    
                     }
-
+    
                 }
-
             }
-        }
-
-    }                            
+    
+        }                            
                             
 ## Select Country Screen:
 
-<img src="screenshot1.png" alt="preview" width="300" height="533">
+<img src="screenshot1.jpg" alt="preview" width="300" height="533">
 
 ## Country List Screen:
 
-<img src="screenshot2.png" alt="preview" width="300" height="533">
+<img src="screenshot2.jpg" alt="preview" width="300" height="533">
 
 ## Country Picker Search Example:
 
-<img src="screenshot3.png" alt="preview" width="300" height="533">
+<img src="screenshot3.jpg" alt="preview" width="300" height="533">
 
 ## Selected Country Screen:
 
-<img src="screenshot4.png" alt="preview" width="300" height="533">
+<img src="screenshot4.jpg" alt="preview" width="300" height="533">
 
 ## Country Picker Selected Tick Example:
 
-<img src="screenshot5.png" alt="preview" width="300" height="533">
+<img src="screenshot5.jpg" alt="preview" width="300" height="533">
 
 
  
