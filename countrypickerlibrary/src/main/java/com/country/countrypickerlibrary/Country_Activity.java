@@ -31,7 +31,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.country.countrypickerlibrary.Utils.AppConstants;
+import com.country.countrypickerlibrary.Utils.CountryConstants;
 import com.country.countrypickerlibrary.Utils.Utils;
 import com.country.countrypickerlibrary.customcomponents.RoundedImageView;
 import com.country.countrypickerlibrary.model.CountryData;
@@ -70,9 +70,9 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
         if(bundle_data!=null)
         {
-           str_country_name= bundle_data.getString(AppConstants.ARGUMENT_1);
-            status_color= bundle_data.getInt(AppConstants.ARGUMENT_2,R.color.colorPrimaryDark);
-            cancel_color= bundle_data.getInt(AppConstants.ARGUMENT_3,R.color.colorPrimary);
+           str_country_name= bundle_data.getString(CountryConstants.ARGUMENT_1);
+            status_color= bundle_data.getInt(CountryConstants.ARGUMENT_2,R.color.colorPrimaryDark);
+            cancel_color= bundle_data.getInt(CountryConstants.ARGUMENT_3,R.color.colorPrimary);
         }
 
         if(!TextUtils.isEmpty(str_country_name))
@@ -146,7 +146,7 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
         try
         {
-            JSONArray jsonArray=new JSONArray(AppConstants.COUNTRY_JSON_DATA);
+            JSONArray jsonArray=new JSONArray(CountryConstants.COUNTRY_JSON_DATA);
 
             for (int i = 0; i < jsonArray.length(); i++)
             {
@@ -401,7 +401,7 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
                     String str_getName=countryData_selected.getCountry_name();
                     Log.e("countryData_selected str_getName ", ""+str_getName);
-                    bundle_data.putString(AppConstants.ARGUMENT_1,str_countryData);
+                    bundle_data.putString(CountryConstants.ARGUMENT_1,str_countryData);
 
                     Intent intent=new Intent();
                     intent.putExtras(bundle_data);

@@ -1,6 +1,6 @@
 package com.country.countrypickerlibrary.Utils;
 
-public class AppConstants
+public class CountryConstants
 {
 
     public static final int  SELECT_COUNTRY=12345;

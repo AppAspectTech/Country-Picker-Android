@@ -10,7 +10,7 @@ import android.view.View;
 
 
 import com.country.countrypickerlibrary.Country_Activity;
-import com.country.countrypickerlibrary.Utils.AppConstants;
+import com.country.countrypickerlibrary.Utils.CountryConstants;
 import com.country.countrypickerlibrary.model.CountryData;
 import com.google.gson.Gson;
 
@@ -56,14 +56,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // check if the request code is same as what is passed  here it is 2
         if(resultCode== Activity.RESULT_OK)
         {
-            if(requestCode== AppConstants.SELECT_COUNTRY)
+            if(requestCode== CountryConstants.SELECT_COUNTRY)
             {
                 if(data!=null)
                 {
                     Bundle bundle_data=data.getExtras();
                     if(bundle_data!=null)
                     {
-                        String str_countryData=bundle_data.getString(AppConstants.ARGUMENT_1);
+                        String str_countryData=bundle_data.getString(CountryConstants.ARGUMENT_1);
                         CountryData countryData_selected=  gson.fromJson(str_countryData,CountryData.class);
 
                         if(countryData_selected==null)
@@ -89,12 +89,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getId()==R.id.edit_country)
         {
             Bundle bundle_data=new Bundle();
-            bundle_data.putString(AppConstants.ARGUMENT_1,edit_country.getText().toString().trim());
-            bundle_data.putInt(AppConstants.ARGUMENT_2,R.color.colorPrimary);
-            bundle_data.putInt(AppConstants.ARGUMENT_3,R.color.colorPrimaryDark);
+            bundle_data.putString(CountryConstants.ARGUMENT_1,edit_country.getText().toString().trim());
+            bundle_data.putInt(CountryConstants.ARGUMENT_2,R.color.colorPrimary);
+            bundle_data.putInt(CountryConstants.ARGUMENT_3,R.color.colorPrimaryDark);
             Intent intent=new Intent(MainActivity.this, Country_Activity.class);
             intent.putExtras(bundle_data);
-            startActivityForResult(intent, AppConstants.SELECT_COUNTRY);
+            startActivityForResult(intent, CountryConstants.SELECT_COUNTRY);
         }
 
     }
