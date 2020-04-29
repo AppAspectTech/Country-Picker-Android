@@ -5,7 +5,7 @@
     android:layout_height="@dimen/header_height"
     android:paddingStart="@dimen/margin_10"
     android:paddingEnd="@dimen/margin_10"
-    android:background="@color/background_grey_light_color"
+    android:background="@color/background_white_color"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView

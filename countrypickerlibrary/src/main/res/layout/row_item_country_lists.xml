@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/ll_list_item"
+<LinearLayout android:id="@+id/ll_list_item"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center|top"
     android:gravity="center"
-    android:paddingEnd="@dimen/margin_02"
-    android:paddingStart="@dimen/margin_02"
-    android:orientation="horizontal">
+    android:layout_margin="@dimen/margin_02"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.country.countrypickerlibrary.customcomponents.RoundedImageView
         android:id="@+id/img_item"
-        android:padding="@dimen/margin_05"
-        android:layout_width="@dimen/item_icon_size"
-        android:layout_height="@dimen/item_icon_size"
-        android:src="@mipmap/us"/>
+        android:layout_width="@dimen/item_icon_width"
+        android:layout_height="@dimen/item_icon_height"
+        android:src="@mipmap/us"
+        app:siRadius="@dimen/image_border_radious"
+        app:siBorderWidth="@dimen/image_border_width"
+        app:siBorderColor="@color/background_grey_light_color" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_dial_code"
         android:paddingEnd="@dimen/margin_02"

@@ -3,6 +3,9 @@ package com.country.countrypickerlibrary;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -30,6 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.country.countrypickerlibrary.Utils.AppConstants;
 import com.country.countrypickerlibrary.Utils.Utils;
+import com.country.countrypickerlibrary.customcomponents.RoundedImageView;
 import com.country.countrypickerlibrary.model.CountryData;
 import com.google.gson.Gson;
 
@@ -295,7 +299,8 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
             private AppCompatTextView txt_dial_code,txt_title;
             private View itemView;
-            private AppCompatImageView img_item,img_item_arrow;
+            private RoundedImageView img_item;
+            private AppCompatImageView img_item_arrow;
             private LinearLayout ll_list_item;
 
             private ItemViewHolder(View itemView)
@@ -332,7 +337,16 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
         {
             return context.getResources().getIdentifier("mipmap/" + imageName, null, context.getPackageName());
         }
-        private void populateItemRows(ItemViewHolder viewHolder, int position) {
+
+        private Bitmap addWhiteBorder(Bitmap bmp, int borderSize) {
+            Bitmap bmpWithBorder = Bitmap.createBitmap(bmp.getWidth() + borderSize * 2, bmp.getHeight() + borderSize * 2, bmp.getConfig());
+            Canvas canvas = new Canvas(bmpWithBorder);
+            canvas.drawColor(Color.WHITE);
+            canvas.drawBitmap(bmp, borderSize, borderSize, null);
+            return bmpWithBorder;
+        }
+
+        private void populateItemRows(final ItemViewHolder viewHolder, int position) {
 
             CountryData countryData = countryDataArrayList_adpt.get(position);
 
@@ -350,6 +364,8 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
                 int id = context.getResources().getIdentifier(getCountry_code, "mipmap", getPackageName());
                 //id = getImageId(context,getCountry_code);
+
+
                 viewHolder.img_item.setImageResource(id);
 
             }
