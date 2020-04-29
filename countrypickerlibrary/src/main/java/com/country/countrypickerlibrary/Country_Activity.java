@@ -53,7 +53,7 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
     private RecyclerView lst_country;
     private List_ItemsAdapter list_items_adapter;
     private Bundle bundle_data=null;
-    private String str_country_name="";
+    private String str_country_name="",str_country_code="",str_country_phone_code="";
     private Gson gson=new Gson();
     private int status_color=R.color.colorPrimaryDark;
     private int  cancel_color=R.color.colorPrimary;
@@ -70,9 +70,11 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
         if(bundle_data!=null)
         {
-           str_country_name= bundle_data.getString(CountryConstants.ARGUMENT_1);
-            status_color= bundle_data.getInt(CountryConstants.ARGUMENT_2,R.color.colorPrimaryDark);
-            cancel_color= bundle_data.getInt(CountryConstants.ARGUMENT_3,R.color.colorPrimary);
+            str_country_code= bundle_data.getString(CountryConstants.ARGUMENT_COUNTRY_CODE);
+            str_country_phone_code= bundle_data.getString(CountryConstants.ARGUMENT_COUNTRY_PHONE_CODE);
+            str_country_name= bundle_data.getString(CountryConstants.ARGUMENT_COUNTRY_CODE);
+            status_color= bundle_data.getInt(CountryConstants.ARGUMENT_STATUSBAR_COLOR,R.color.colorPrimaryDark);
+            cancel_color= bundle_data.getInt(CountryConstants.ARGUMENT_CANCEL_COLOR,R.color.colorPrimary);
         }
 
         if(!TextUtils.isEmpty(str_country_name))
@@ -157,7 +159,21 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
                 countryData.setChecked(false);
 
-                if(!TextUtils.isEmpty(str_country_name))
+                if(!TextUtils.isEmpty(str_country_code))
+                {
+                    if(str_country_code.equalsIgnoreCase(countryData.getCountry_code()))
+                    {
+                        countryData.setChecked(true);
+                    }
+                }
+                else if(!TextUtils.isEmpty(str_country_phone_code))
+                {
+                    if(str_country_phone_code.equalsIgnoreCase(countryData.getCountry_dial_code()))
+                    {
+                        countryData.setChecked(true);
+                    }
+                }
+                else if(!TextUtils.isEmpty(str_country_name))
                 {
                     if(str_country_name.equalsIgnoreCase(countryData.getCountry_name()))
                     {
@@ -401,7 +417,7 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
                     String str_getName=countryData_selected.getCountry_name();
                     Log.e("countryData_selected str_getName ", ""+str_getName);
-                    bundle_data.putString(CountryConstants.ARGUMENT_1,str_countryData);
+                    bundle_data.putString(CountryConstants.ARGUMENT_COUNTRY_DATA,str_countryData);
 
                     Intent intent=new Intent();
                     intent.putExtras(bundle_data);

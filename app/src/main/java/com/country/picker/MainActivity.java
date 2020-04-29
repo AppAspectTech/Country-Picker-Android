@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private AppCompatEditText edit_country;
     private Gson gson=new Gson();
-
+    private CountryData countryData_selected;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -63,16 +63,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Bundle bundle_data=data.getExtras();
                     if(bundle_data!=null)
                     {
-                        String str_countryData=bundle_data.getString(CountryConstants.ARGUMENT_1);
-                        CountryData countryData_selected=  gson.fromJson(str_countryData,CountryData.class);
-
+                        String str_countryData=bundle_data.getString(CountryConstants.ARGUMENT_COUNTRY_DATA);
+                        countryData_selected=  gson.fromJson(str_countryData,CountryData.class);
                         if(countryData_selected==null)
                         {
                             edit_country.setText("");
                         }
                         else
                         {
-                            edit_country.setText(countryData_selected.getCountry_name());
+                            edit_country.setText(countryData_selected.getCountry_dial_code());
+
+
+                            //"OR"
+                            //edit_country.setText(countryData_selected.getCountry_name());
+
+                            //"OR"
+                            //edit_country.setText(countryData_selected.getCountry_code());
+
+
                         }
 
                     }
@@ -89,9 +97,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getId()==R.id.edit_country)
         {
             Bundle bundle_data=new Bundle();
-            bundle_data.putString(CountryConstants.ARGUMENT_1,edit_country.getText().toString().trim());
-            bundle_data.putInt(CountryConstants.ARGUMENT_2,R.color.colorPrimary);
-            bundle_data.putInt(CountryConstants.ARGUMENT_3,R.color.colorPrimaryDark);
+
+            if(countryData_selected==null)
+            {
+
+                bundle_data.putString(CountryConstants.ARGUMENT_COUNTRY_PHONE_CODE,edit_country.getText().toString().trim());
+
+
+                //"OR"
+                //bundle_data.putString(CountryConstants.ARGUMENT_COUNTRY_CODE,edit_country.getText().toString().trim());
+
+                //"OR"
+                //bundle_data.putString(CountryConstants.ARGUMENT_COUNTRY_NAME,edit_country.getText().toString().trim());
+
+
+            }
+            else
+            {
+                bundle_data.putString(CountryConstants.ARGUMENT_COUNTRY_PHONE_CODE,countryData_selected.getCountry_dial_code());
+
+
+                //"OR"
+                //bundle_data.putString(CountryConstants.ARGUMENT_COUNTRY_CODE,countryData_selected.getCountry_code());
+
+                //"OR"
+                //bundle_data.putString(CountryConstants.ARGUMENT_COUNTRY_NAME,countryData_selected.getCountry_name());
+
+            }
+
+            bundle_data.putInt(CountryConstants.ARGUMENT_STATUSBAR_COLOR,R.color.colorPrimary);
+            bundle_data.putInt(CountryConstants.ARGUMENT_CANCEL_COLOR,R.color.colorPrimaryDark);
             Intent intent=new Intent(MainActivity.this, Country_Activity.class);
             intent.putExtras(bundle_data);
             startActivityForResult(intent, CountryConstants.SELECT_COUNTRY);
