@@ -125,8 +125,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
 
-            bundle_data.putInt(CountryConstants.ARGUMENT_STATUSBAR_COLOR,R.color.colorPrimary);
-            bundle_data.putInt(CountryConstants.ARGUMENT_CANCEL_COLOR,R.color.colorPrimaryDark);
+            bundle_data.putInt(CountryConstants.ARGUMENT_STATUSBAR_COLOR,R.color.background_black_color);
+            bundle_data.putInt(CountryConstants.ARGUMENT_CANCEL_COLOR,R.color.text_color_white);
+
+
+            bundle_data.putInt(CountryConstants.ARGUMENT_HEADER_COLOR,R.color.text_color_white);
+            bundle_data.putInt(CountryConstants.ARGUMENT_HEADER_BG_COLOR,R.color.background_black_color);
+            bundle_data.putInt(CountryConstants.ARGUMENT_MAIN_BG_COLOR,R.color.background_black_color);
+            bundle_data.putInt(CountryConstants.ARGUMENT_LIST_TEXT_COLOR,R.color.text_color_white);
+            bundle_data.putInt(CountryConstants.ARGUMENT_LIST_DIVIDER_COLOR,R.color.text_color_gray1);
+
+
             Intent intent=new Intent(MainActivity.this, Country_Activity.class);
             intent.putExtras(bundle_data);
             startActivityForResult(intent, CountryConstants.SELECT_COUNTRY);

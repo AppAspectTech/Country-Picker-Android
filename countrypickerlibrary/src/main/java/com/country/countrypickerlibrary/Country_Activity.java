@@ -18,6 +18,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -57,6 +58,14 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
     private Gson gson=new Gson();
     private int status_color=R.color.colorPrimaryDark;
     private int  cancel_color=R.color.colorPrimary;
+    private int  header_color=R.color.text_color_black;
+    private int  header_bg_color=R.color.background_white_color;
+    private int  main_bg_color=R.color.background_white_color;
+    private int  list_text_color=R.color.text_color_black;
+    private int  list_divider_color=R.color.background_white_color;
+    private LinearLayout ll_main_bg;
+    private FrameLayout ll_header_bg;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -72,9 +81,16 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
         {
             str_country_code= bundle_data.getString(CountryConstants.ARGUMENT_COUNTRY_CODE);
             str_country_phone_code= bundle_data.getString(CountryConstants.ARGUMENT_COUNTRY_PHONE_CODE);
-            str_country_name= bundle_data.getString(CountryConstants.ARGUMENT_COUNTRY_CODE);
+            str_country_name= bundle_data.getString(CountryConstants.ARGUMENT_COUNTRY_NAME);
+
             status_color= bundle_data.getInt(CountryConstants.ARGUMENT_STATUSBAR_COLOR,R.color.colorPrimaryDark);
             cancel_color= bundle_data.getInt(CountryConstants.ARGUMENT_CANCEL_COLOR,R.color.colorPrimary);
+            header_color= bundle_data.getInt(CountryConstants.ARGUMENT_HEADER_COLOR,R.color.text_color_black);
+            header_bg_color= bundle_data.getInt(CountryConstants.ARGUMENT_HEADER_BG_COLOR,R.color.background_white_color);
+            main_bg_color= bundle_data.getInt(CountryConstants.ARGUMENT_MAIN_BG_COLOR,R.color.background_white_color);
+            list_text_color= bundle_data.getInt(CountryConstants.ARGUMENT_LIST_TEXT_COLOR,R.color.text_color_black);
+            list_divider_color= bundle_data.getInt(CountryConstants.ARGUMENT_LIST_DIVIDER_COLOR,R.color.background_white_color);
+
         }
 
         if(!TextUtils.isEmpty(str_country_name))
@@ -82,7 +98,7 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
             Log.e("str_country_name ", ""+str_country_name);
         }
 
-            //changing statusbar color
+        //changing statusbar color
         if (android.os.Build.VERSION.SDK_INT >= 21)
         {
             Window window = this.getWindow();
@@ -99,6 +115,8 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
     private void init()
     {
+        ll_main_bg= findViewById(R.id.ll_main_bg);
+        ll_header_bg= findViewById(R.id.ll_header_bg);
         lst_country = findViewById(R.id.lst_country);
         AppCompatEditText edt_search = findViewById(R.id.edt_search);
 
@@ -126,15 +144,21 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
             }
         });
 
+        ll_main_bg.setBackgroundColor(getResources().getColor(main_bg_color));
+        ll_header_bg.setBackgroundColor(getResources().getColor(header_bg_color));
     }
 
     private void manageHeader()
     {
+
+
         AppCompatTextView txt_Cancel= findViewById(R.id.txt_Cancel);
         AppCompatTextView txt_Select=findViewById(R.id.txt_Select);
+        AppCompatTextView  txtHeaderTitle=findViewById(R.id.txtHeaderTitle);
 
         txt_Cancel.setTextColor(this.getResources().getColor(cancel_color));
         txt_Select.setTextColor(this.getResources().getColor(cancel_color));
+        txtHeaderTitle.setTextColor(this.getResources().getColor(header_color));
         txt_Select.setVisibility(AppCompatTextView.INVISIBLE);
         txt_Select.setOnClickListener(this);
         txt_Cancel.setOnClickListener(this);
@@ -330,6 +354,9 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
                 img_item_arrow =  itemView.findViewById(R.id.img_item_arrow);
                 ll_list_item= itemView.findViewById(R.id.ll_list_item);
 
+                txt_dial_code.setTextColor(getResources().getColor(list_text_color));
+                txt_title.setTextColor(getResources().getColor(list_text_color));
+                img_item_arrow .setColorFilter(getResources().getColor(list_text_color));
             }
         }
 
@@ -461,7 +488,7 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
                 {
                     filteredList.addAll(countryDataArrayList_adpt_all);
                 } else
-                    {
+                {
                     String filterPattern = constraint.toString().toLowerCase().trim();
                     for (CountryData item : countryDataArrayList_adpt_all)
                     {
