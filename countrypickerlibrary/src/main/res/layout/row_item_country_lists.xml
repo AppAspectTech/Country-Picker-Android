@@ -54,12 +54,14 @@
             android:src="@mipmap/check_mark"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/ll_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/background_grey_light_color"
-        android:orientation="horizontal">
+        android:orientation="vertical">
     </LinearLayout>
+
 </LinearLayout>
 

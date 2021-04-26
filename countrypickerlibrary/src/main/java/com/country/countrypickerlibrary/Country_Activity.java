@@ -348,16 +348,15 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
                 super(itemView);
                 this.itemView = itemView;
+
                 txt_dial_code= itemView.findViewById(R.id.txt_dial_code);
                 txt_title = itemView.findViewById(R.id.txt_title);
                 img_item =  itemView.findViewById(R.id.img_item);
                 img_item_arrow =  itemView.findViewById(R.id.img_item_arrow);
                 ll_list_item= itemView.findViewById(R.id.ll_list_item);
                 ll_divider= itemView.findViewById(R.id.ll_divider);
-                txt_dial_code.setTextColor(getResources().getColor(list_text_color));
-                txt_title.setTextColor(getResources().getColor(list_text_color));
-                img_item_arrow .setColorFilter(getResources().getColor(list_text_color));
-                ll_divider.setBackgroundColor(getResources().getColor(list_divider_color));
+
+
             }
         }
 
@@ -396,6 +395,10 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
             boolean isChecked=countryData.isChecked();
 
+            viewHolder.txt_dial_code.setTextColor(context.getResources().getColor(list_text_color));
+            viewHolder.txt_title.setTextColor(context.getResources().getColor(list_text_color));
+            viewHolder.img_item_arrow .setColorFilter(context.getResources().getColor(list_text_color));
+            viewHolder.ll_divider.setBackgroundColor(context.getResources().getColor(list_divider_color));
 
             try
             {
