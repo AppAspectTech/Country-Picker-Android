@@ -62,7 +62,7 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
     private int  header_bg_color=R.color.background_white_color;
     private int  main_bg_color=R.color.background_white_color;
     private int  list_text_color=R.color.text_color_black;
-    private int  list_divider_color=R.color.background_white_color;
+    private int  list_divider_color=R.color.background_grey_light_color;
     private LinearLayout ll_main_bg;
     private FrameLayout ll_header_bg;
 
@@ -89,7 +89,7 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
             header_bg_color= bundle_data.getInt(CountryConstants.ARGUMENT_HEADER_BG_COLOR,R.color.background_white_color);
             main_bg_color= bundle_data.getInt(CountryConstants.ARGUMENT_MAIN_BG_COLOR,R.color.background_white_color);
             list_text_color= bundle_data.getInt(CountryConstants.ARGUMENT_LIST_TEXT_COLOR,R.color.text_color_black);
-            list_divider_color= bundle_data.getInt(CountryConstants.ARGUMENT_LIST_DIVIDER_COLOR,R.color.background_white_color);
+            list_divider_color= bundle_data.getInt(CountryConstants.ARGUMENT_LIST_DIVIDER_COLOR,R.color.background_grey_light_color);
 
         }
 
@@ -122,7 +122,7 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
 
         LinearLayoutManager   layoutManager =new LinearLayoutManager(this);
         lst_country.setLayoutManager(layoutManager);
-        lst_country.addItemDecoration(new DividerItemDecoration(lst_country.getContext(), LinearLayout.VERTICAL));
+     //   lst_country.addItemDecoration(new DividerItemDecoration(lst_country.getContext(), LinearLayout.VERTICAL));
 
 
         edt_search.addTextChangedListener(new TextWatcher() {
@@ -341,7 +341,7 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
             private View itemView;
             private RoundedImageView img_item;
             private AppCompatImageView img_item_arrow;
-            private LinearLayout ll_list_item;
+            private LinearLayout ll_list_item,ll_divider;
 
             private ItemViewHolder(View itemView)
             {
@@ -353,10 +353,11 @@ public class Country_Activity extends AppCompatActivity implements View.OnClickL
                 img_item =  itemView.findViewById(R.id.img_item);
                 img_item_arrow =  itemView.findViewById(R.id.img_item_arrow);
                 ll_list_item= itemView.findViewById(R.id.ll_list_item);
-
+                ll_divider= itemView.findViewById(R.id.ll_divider);
                 txt_dial_code.setTextColor(getResources().getColor(list_text_color));
                 txt_title.setTextColor(getResources().getColor(list_text_color));
                 img_item_arrow .setColorFilter(getResources().getColor(list_text_color));
+                ll_divider.setBackgroundColor(getResources().getColor(list_divider_color));
             }
         }
 

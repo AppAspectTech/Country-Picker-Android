@@ -33,7 +33,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-		implementation 'com.github.AppAspectTech:Country-Picker-Android:1.0.4'
+		implementation 'com.github.AppAspectTech:Country-Picker-Android:1.0.5'
 	}
 
 ## Notes
@@ -80,9 +80,27 @@ Country Picker Example:
                                                 //bundle_data.putString(CountryConstants.ARGUMENT_COUNTRY_NAME,countryData_selected.getCountry_name());                 // for set the country name
                                 
                                             }
-                                
-                                            bundle_data.putInt(CountryConstants.ARGUMENT_STATUSBAR_COLOR,R.color.colorPrimary);             // for set the status bar color as per theme
-                                            bundle_data.putInt(CountryConstants.ARGUMENT_CANCEL_COLOR,R.color.colorPrimaryDark);            // for set the Cancel color as per theme
+
+
+                                          //  // Black  Theme
+                                          //  bundle_data.putInt(CountryConstants.ARGUMENT_STATUSBAR_COLOR,R.color.background_black_color);         // for set the status bar color as per theme
+                                          //  bundle_data.putInt(CountryConstants.ARGUMENT_CANCEL_COLOR,R.color.text_color_white);                 // for set the cancel text color as per theme
+                                         //   bundle_data.putInt(CountryConstants.ARGUMENT_HEADER_COLOR,R.color.text_color_white);                 // for set the Header text color as per theme
+                                        //    bundle_data.putInt(CountryConstants.ARGUMENT_HEADER_BG_COLOR,R.color.background_black_color);        // for set the Header Background color as per theme
+                                        //    bundle_data.putInt(CountryConstants.ARGUMENT_MAIN_BG_COLOR,R.color.background_black_color);          // for set the Main Background color as per theme
+                                         //   bundle_data.putInt(CountryConstants.ARGUMENT_LIST_TEXT_COLOR,R.color.text_color_white);                  // for set the List text color as per theme
+                                        //    bundle_data.putInt(CountryConstants.ARGUMENT_LIST_DIVIDER_COLOR,R.color.background_grey_dark_color);    // for set the List Divider color as per theme
+
+                                            // White Theme
+                                            bundle_data.putInt(CountryConstants.ARGUMENT_STATUSBAR_COLOR,R.color.colorPrimaryDark);         // for set the status bar color as per theme
+                                            bundle_data.putInt(CountryConstants.ARGUMENT_CANCEL_COLOR,R.color.colorPrimary);                 // for set the cancel text color as per theme
+                                            bundle_data.putInt(CountryConstants.ARGUMENT_HEADER_COLOR,R.color.text_color_black);                 // for set the Header text color as per theme
+                                            bundle_data.putInt(CountryConstants.ARGUMENT_HEADER_BG_COLOR,R.color.background_white_color);        // for set the Header Background color as per theme
+                                            bundle_data.putInt(CountryConstants.ARGUMENT_MAIN_BG_COLOR,R.color.background_white_color);          // for set the Main Background color as per theme
+                                            bundle_data.putInt(CountryConstants.ARGUMENT_LIST_TEXT_COLOR,R.color.text_color_black);                  // for set the List text color as per theme
+                                            bundle_data.putInt(CountryConstants.ARGUMENT_LIST_DIVIDER_COLOR,R.color.background_grey_light_color);    // for set the List Divider color as per theme
+
+
                                             Intent intent=new Intent(MainActivity.this, Country_Activity.class);
                                             intent.putExtras(bundle_data);
                                             startActivityForResult(intent, CountryConstants.SELECT_COUNTRY);
